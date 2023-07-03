@@ -1,4 +1,4 @@
-# Update pacman database
+# Update
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -98,10 +98,9 @@ if [ ! $(git config user.name)  ]; then
     git config --global user.name $git_name
 fi
 
-if [[ ! -f $HOME/.zshrc ]]
-then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sudo chsh -s /bin/zsh $USER
 
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
@@ -120,15 +119,8 @@ sudo systemctl start libvirtd.service
 if [ $USER = fw ]; then
     git_url="https://github.com/frodus/dotfiles.git"
 
-# Add Teamviewer config to make it start
-    # sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-    # echo -e '[Service] \nEnvironment=XDG_SESSION_TYPE=x11' | sudo tee /etc/systemd/system/getty@tty1.service.d/getty@tty1.service-drop-in.conf
-
-    # paru -S --noconfirm --needed dwm st xorg-xinit xorg-server neovim rsync microsoft-edge-stable-bin qelectrotech libva-intel-driver dmenu prusa-slicer xidlehook
-
 elif [ $USER = ingar ]; then
     git_url="https://github.com/ingar195/.dotfiles.git"
-    
    
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
@@ -177,12 +169,6 @@ then
     dotfiles checkout -f
 else
     dotfiles pull
-fi
-
-
-# not working
-if [ "$(echo $SHELL )" != "/bin/zsh" ]; then
-    chsh -s /bin/zsh
 fi
 
 # Power settings
