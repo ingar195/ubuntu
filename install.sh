@@ -22,6 +22,7 @@ elif [ $USER = ingar ]; then
     sudo apt install -f -y
     rm google-chrome-stable_current_amd64.deb
     sudo apt install -y i3-wm
+    sudo echo /usr/bin/i3 > /etc/X11/default-display-manager
 
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
@@ -47,7 +48,7 @@ sudo apt install -y zsh remmina ansible qbittorrent \
  rclone flameshot bc unzip dmidecode autorandr variety git tree \
  virt-manager dunst xclip  rofi scrot powertop openvpn \
   wget python3 freecad gparted kicad polybar \
-  docker.io docker-compose htop
+  docker.io docker-compose htop powerline
 
 sudo snap install slack
 sudo snap install --classic code
