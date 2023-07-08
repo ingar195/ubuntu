@@ -21,6 +21,7 @@ elif [ $USER = ingar ]; then
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -f -y
     rm google-chrome-stable_current_amd64.deb
+    sudo apt install -y i3-wm
 
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
