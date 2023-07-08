@@ -112,7 +112,7 @@ sudo chsh -s /bin/zsh $USER
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
 #Docker
-sudo systemctl enable docker.service acpid.service --now
+sudo systemctl enable docker.service --now
 sudo usermod -aG docker $USER
 
 # Virt Manager
@@ -175,3 +175,4 @@ sudo apt autoclean -y
 echo ----------------------
 echo "Please reboot your PC"
 echo ----------------------
+exit
