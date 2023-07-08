@@ -1,4 +1,8 @@
 # Update
+if [ $(whoami) = root ]; then
+    echo "Do not run this script as root"
+    exit 1
+fi
 if [ ! $(git config user.email)  ]; then
     read -p "Type your git email:  " git_email
     
@@ -13,7 +17,11 @@ if [ $USER = fw ]; then
 
 elif [ $USER = ingar ]; then
     git_url="https://github.com/ingar195/.dotfiles.git"
-   
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt install -f -y
+    rm google-chrome-stable_current_amd64.deb
+
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
     echo Screen 
