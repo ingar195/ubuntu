@@ -21,7 +21,7 @@ elif [ $USER = ingar ]; then
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -f -y
     rm google-chrome-stable_current_amd64.deb
-    sudo apt install -y i3-wm
+    sudo apt install -y i3-wm i3lock
     sudo echo /usr/bin/i3 > /etc/X11/default-display-manager
 
 elif [ $USER = screen ]; then
