@@ -21,7 +21,7 @@ elif [ $USER = ingar ]; then
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -f -y
     rm google-chrome-stable_current_amd64.deb
-    sudo apt install -y i3-wm i3lock
+    sudo apt install -y i3-wm i3lock xautolock
     sudo echo /usr/bin/i3 > /etc/X11/default-display-manager
 
 elif [ $USER = screen ]; then
@@ -47,11 +47,13 @@ fi
 sudo apt install -y zsh remmina ansible qbittorrent \
  rclone flameshot bc unzip dmidecode autorandr variety git tree \
  virt-manager dunst xclip  rofi scrot powertop openvpn \
-  wget python3 freecad gparted kicad polybar arndr \
-  docker.io docker-compose htop powerline feh
+  wget python3 freecad gparted kicad polybar arndr pavucontrol \
+  docker.io docker-compose htop powerline feh playerctl numlockx
 
 sudo snap install slack
 sudo snap install --classic code
+sudo snap install spotify
+
 # Vscode extensions
 code --install-extension alexcvzz.vscode-sqlite
 code --install-extension atlassian.atlascode 
