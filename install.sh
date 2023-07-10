@@ -47,7 +47,7 @@ fi
 sudo apt install -y zsh remmina ansible qbittorrent \
  rclone flameshot bc unzip dmidecode autorandr variety git tree \
  virt-manager dunst xclip  rofi scrot powertop openvpn \
-  wget python3 freecad gparted kicad polybar \
+  wget python3 freecad gparted kicad polybar arndr \
   docker.io docker-compose htop powerline feh
 
 sudo snap install slack
