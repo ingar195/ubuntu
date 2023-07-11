@@ -3,12 +3,12 @@ if [ $(whoami) = root ]; then
     echo "Do not run this script as root"
     exit 1
 fi
-if [ ! $(git config user.email)  ]; then
+if [ ! $(git config user.email) ]; then
     read -p "Type your git email:  " git_email
-    
+
 fi
-if [ ! $(git config user.name)  ]; then
-    read -p "Type your git Full name:  " git_name
+if [ ! $(git config user.name) ]; then
+    read -p "Type your git Full name: " git_name
 fi
 
 # user defaults
@@ -26,13 +26,12 @@ elif [ $USER = ingar ]; then
 
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
-    echo Screen 
+    echo Screen
 else
     read -p "enter the https URL for you git bare repo : " git_url
 fi
 sudo apt update -y
 sudo apt upgrade -y
-
 
 # Surface
 if [ "$(dmidecode -s system-product-name | grep -i Surface)" ]; then
@@ -42,14 +41,13 @@ if [ "$(dmidecode -s system-product-name | grep -i Surface)" ]; then
     sudo apt install -y linux-image-surface linux-headers-surface libwacom-surface iptsd
 fi
 
-
 #paru -S --noconfirm --needed zsh arandr remmina-plugin-rdesktop docker sshpass remmina ansible qbittorrent gnu-netcat qemu-full networkmanager-l2tp networkmanager-strongswan remmina-plugin-ultravnc screen meld betterlockscreen_rapid-git dnsmasq rclone ntfs-3g flameshot acpid bc numlockx spotify-launcher unzip usbutils dmidecode autorandr pavucontrol variety termite feh git tree virt-manager dunst xclip xorg-xkill rofi acpilight nautilus scrot teamviewer network-manager-applet xautolock man powertop networkmanager nm-connection-editor network-manager-applet openvpn slack-desktop wget python google-chrome freecad gparted peak-linux-headers kicad i3exit polybar parsec-bin can-utils visual-studio-code-bin ttf-nerd-fonts-symbols libreoffice-fresh gnome-keyring subversion
 sudo apt install -y zsh remmina ansible qbittorrent \
- rclone flameshot bc unzip dmidecode autorandr variety git tree \
- virt-manager dunst xclip  rofi scrot powertop openvpn \
-  wget python3 freecad gparted kicad polybar arndr pavucontrol \
-  docker.io docker-compose htop powerline feh playerctl numlockx \
-  printer-driver-dymo 
+    rclone flameshot bc unzip dmidecode autorandr variety git tree \
+    virt-manager dunst xclip rofi scrot powertop openvpn \
+    wget python3 freecad gparted kicad polybar arndr pavucontrol \
+    docker.io docker-compose htop powerline feh playerctl numlockx \
+    printer-driver-dymo
 
 sudo snap install slack
 sudo snap install --classic code
@@ -57,25 +55,24 @@ sudo snap install spotify
 
 # Vscode extensions
 code --install-extension alexcvzz.vscode-sqlite
-code --install-extension atlassian.atlascode 
-code --install-extension danielroedl.meld-diff eamodio.gitlens 
-code --install-extension formulahendry.auto-rename-tag 
-code --install-extension idleberg.haskell-nsis 
-code --install-extension idleberg.nsis 
-code --install-extension mhutchie.git-graph 
-code --install-extension ms-azuretools.vscode-docker 
-code --install-extension ms-python.python  
-code --install-extension ms-vscode-remote.remote-containers 
-code --install-extension ms-vscode-remote.remote-ssh 
-code --install-extension redhat.vscode-xml 
-code --install-extension redhat.vscode-yaml 
+code --install-extension atlassian.atlascode
+code --install-extension danielroedl.meld-diff eamodio.gitlens
+code --install-extension formulahendry.auto-rename-tag
+code --install-extension idleberg.haskell-nsis
+code --install-extension idleberg.nsis
+code --install-extension mhutchie.git-graph
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+code --install-extension ms-vscode-remote.remote-containers
+code --install-extension ms-vscode-remote.remote-ssh
+code --install-extension redhat.vscode-xml
+code --install-extension redhat.vscode-yaml
 code --install-extension tonybaloney.vscode-pets
 
 sudo gpasswd -a $USER uucp
 
 # Generate ssh key
-if [ ! -f $HOME/.ssh/id_rsa ]
-then
+if [ ! -f $HOME/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
 fi
 
@@ -95,14 +92,13 @@ sudo apt install -f -y
 rm teamviewer_amd64.deb
 
 # Enable services
-if ! systemctl is-active --quiet teamviewerd  ; then
+if ! systemctl is-active --quiet teamviewerd; then
     systemctl enable teamviewerd.service --now
 fi
 # Darkmode TeamViewer
 if ! grep -q "ColorScheme = 2" $HOME/.config/teamviewer/client.conf; then
-    echo "[int32] ColorScheme = 2" >> $HOME/.config/teamviewer/client.conf
+    echo "[int32] ColorScheme = 2" >>$HOME/.config/teamviewer/client.conf
 fi
-
 
 # sudo sh -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 # sudo sh -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
@@ -119,6 +115,7 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 #Docker
 sudo systemctl enable docker.service --now
 sudo usermod -aG docker $USER
+sudo usermod -aG uucp $USER
 
 # Virt Manager
 sudo usermod -G libvirt -a $USER
@@ -127,10 +124,7 @@ sudo systemctl start libvirtd.service
 ## This command does not work, and we do not know the reason or a workaround yet...
 #sudo virsh net-autostart default
 
-
-
-if [ ! -f .dotfiles/config ]
-then
+if [ ! -f .dotfiles/config ]; then
     rm .config/i3/config
     mkdir .config/polybar
 fi
@@ -144,27 +138,22 @@ al_vpn="alias vpn='sudo openvpn --config /home/$USER/.config/vpn/vpn.ovpn'"
 al_lll="alias lll='tree -fiql --dirsfirst --noreport'"
 al_py="alias py='python3'"
 
-
-for value in "$al_dot" "$al_rs" "$al_dotp" "$al_can" "$al_vpn" " $al_lll" "$al_py"
-do
-    if ! grep -Fxq "$value" $HOME/.zshrc
-    then
+for value in "$al_dot" "$al_rs" "$al_dotp" "$al_can" "$al_vpn" " $al_lll" "$al_py"; do
+    if ! grep -Fxq "$value" $HOME/.zshrc; then
         echo $value
-        echo $value >> $HOME/.zshrc
+        echo $value >>$HOME/.zshrc
     fi
 done
 
-# Tmp alias for installation only 
+# Tmp alias for installation only
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/home/$USER'
 
 # Create gitingore
-if [ ! -f $HOME/.gitignore ]
-then
-    echo ".dotfiles" > $HOME/.gitignore
+if [ ! -f $HOME/.gitignore ]; then
+    echo ".dotfiles" >$HOME/.gitignore
 fi
 
-if [ ! -d $HOME/.dotfiles/ ]
-then
+if [ ! -d $HOME/.dotfiles/ ]; then
     echo "Did not find .dotfiles, so will check them out again"
     git clone --bare $git_url $HOME/.dotfiles
     dotfiles checkout -f
