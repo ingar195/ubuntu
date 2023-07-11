@@ -48,7 +48,8 @@ sudo apt install -y zsh remmina ansible qbittorrent \
  rclone flameshot bc unzip dmidecode autorandr variety git tree \
  virt-manager dunst xclip  rofi scrot powertop openvpn \
   wget python3 freecad gparted kicad polybar arndr pavucontrol \
-  docker.io docker-compose htop powerline feh playerctl numlockx
+  docker.io docker-compose htop powerline feh playerctl numlockx \
+  printer-driver-dymo 
 
 sudo snap install slack
 sudo snap install --classic code
