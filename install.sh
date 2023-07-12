@@ -30,6 +30,21 @@ elif [ $USER = screen ]; then
 else
     read -p "enter the https URL for you git bare repo : " git_url
 fi
+
+# Add ppa for intune portal
+sudo apt install -y curl gpg
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" > /etc/apt/sources.list.d/microsoft-ubuntu-jammy-prod.list'
+sudo rm microsoft.gpg
+
+# Add ppa for MS edge
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+sudo rm microsoft.gpg
+
+# Make sure all existing packages are up to date
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -47,7 +62,7 @@ sudo apt install -y zsh remmina ansible qbittorrent \
     virt-manager dunst xclip rofi scrot powertop openvpn \
     wget python3 freecad gparted kicad polybar arandr pavucontrol \
     docker.io docker-compose htop powerline feh playerctl numlockx \
-    printer-driver-dymo
+    printer-driver-dymo intune-portal microsoft-edge-stable
 
 sudo snap install slack
 sudo snap install --classic code
