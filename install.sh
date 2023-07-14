@@ -62,7 +62,8 @@ sudo apt install -y zsh remmina ansible qbittorrent \
     virt-manager dunst xclip rofi scrot powertop openvpn \
     wget python3 freecad gparted kicad polybar arandr pavucontrol \
     docker.io docker-compose htop powerline feh playerctl numlockx \
-    printer-driver-dymo intune-portal microsoft-edge-stable sshpass
+    printer-driver-dymo intune-portal microsoft-edge-stable sshpass \
+    libreoffice
 
 sudo snap install slack
 sudo snap install --classic code
