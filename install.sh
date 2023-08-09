@@ -63,7 +63,7 @@ sudo apt install -y zsh remmina ansible qbittorrent \
     wget python3 freecad gparted kicad polybar arandr pavucontrol \
     docker.io docker-compose htop powerline feh playerctl numlockx \
     printer-driver-dymo intune-portal microsoft-edge-stable sshpass \
-    libreoffice wireguard qelectrotech
+    libreoffice wireguard qelectrotech brightnessctl
 
 sudo snap install slack
 sudo snap install --classic code
