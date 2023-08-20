@@ -145,25 +145,28 @@ if [ ! -f .dotfiles/config ]; then
     mkdir .config/polybar
 fi
 
-# Aliases
-al_dot="alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/home/$USER'"
-al_dotp="alias dotp='dotfiles commit -am update && dotfiles push'"
-al_rs="alias rs='rsync --info=progress2 -au'"
-al_can="alias cansetup='sudo ip link set can0 type can bitrate 125000 && sudo ip link set up can0'"
-al_vpn="alias vpn='sudo openvpn --config /home/$USER/.config/vpn/vpn.ovpn'"
-al_wg="alias wg='sudo wg-quick up /home/$USER/.config/wireguard/wg0.conf'"
-al_lll="alias lll='tree -fiql --dirsfirst --noreport'"
-al_py="alias py='python3'"
-al_python="alias python='python3'"
-al_up="alias up='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'"
+
+# Aliases and functions
+# Copy .aliases and .functions files to .config
+zsh_config_path=$HOME/.config/zsh
+mkdir -p $zsh_config_path
+
+cp .aliases $zsh_config_path/
+cp .functions $zsh_config_path/
 
 
-for value in "$al_dot" "$al_rs" "$al_dotp" "$al_can" "$al_vpn" " $al_lll" "$al_py"; do
-    if ! grep -Fxq "$value" $HOME/.zshrc; then
-        echo $value
-        echo $value >>$HOME/.zshrc
+# Function to add source to .zshrc if not already there
+add_source_to_zshrc() {
+    echo "Adding 'source $1 to .zshrc'"
+    if ! grep -Fxq "source $1" $HOME/.zshrc; then
+        echo "source $1" >> $HOME/.zshrc
     fi
-done
+}
+
+# Add sources to .zshrc if not already there
+add_source_to_zshrc "$zsh_config_path/.aliases"
+add_source_to_zshrc "$zsh_config_path/.functions"
+add_source_to_zshrc "$zsh_config_path/.work"
 
 # Tmp alias for installation only
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/home/$USER'
