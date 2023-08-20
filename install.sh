@@ -183,6 +183,10 @@ fi
 
 # Power settings
 sudo powertop --auto-tune
+
+# Enable lid close suspend
+sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=suspend/' /etc/systemd/logind.conf
+
 sudo apt autoremove -y
 sudo apt autoclean -y
 
