@@ -4,3 +4,7 @@ function install() {
 function uninstall() {
     sudo apt purge "$1" -y
 }
+function update() {
+    sudo apt update -y
+    sudo apt upgrade -y
+}
