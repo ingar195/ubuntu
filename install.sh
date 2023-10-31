@@ -15,7 +15,7 @@ fi
 if [ $USER = fw ]; then
     git_url="https://github.com/frodus/dotfiles.git"
 
-elif [ $USER = ingar ]; then
+elif [ "$USER" = "ingar" ] || [ "$USER" = "user" ]; then
     git_url="https://github.com/ingar195/.dotfiles.git"
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -23,6 +23,7 @@ elif [ $USER = ingar ]; then
     rm google-chrome-stable_current_amd64.deb
     sudo apt install -y i3-wm i3lock xautolock
     sudo echo /usr/bin/i3 > /etc/X11/default-display-manager
+    sudo snap install discord
 
 elif [ $USER = screen ]; then
     # Autostart script for web kiosk
@@ -85,6 +86,8 @@ code --install-extension ms-vscode-remote.remote-ssh
 code --install-extension redhat.vscode-xml
 code --install-extension redhat.vscode-yaml
 code --install-extension tonybaloney.vscode-pets
+code --install-extension Huuums.vscode-fast-folder-structure
+
 
 sudo gpasswd -a $USER uucp
 
