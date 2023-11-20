@@ -57,10 +57,9 @@ if [ "$(dmidecode -s system-product-name | grep -i Surface)" ]; then
     sudo apt install -y linux-image-surface linux-headers-surface libwacom-surface iptsd
 fi
 
-#paru -S --noconfirm --needed zsh arandr remmina-plugin-rdesktop docker sshpass remmina ansible qbittorrent gnu-netcat qemu-full networkmanager-l2tp networkmanager-strongswan remmina-plugin-ultravnc screen meld betterlockscreen_rapid-git dnsmasq rclone ntfs-3g flameshot acpid bc numlockx spotify-launcher unzip usbutils dmidecode autorandr pavucontrol variety termite feh git tree virt-manager dunst xclip xorg-xkill rofi acpilight nautilus scrot teamviewer network-manager-applet xautolock man powertop networkmanager nm-connection-editor network-manager-applet openvpn slack-desktop wget python google-chrome freecad gparted peak-linux-headers kicad i3exit polybar parsec-bin can-utils visual-studio-code-bin ttf-nerd-fonts-symbols libreoffice-fresh gnome-keyring subversion
 sudo apt install -y zsh remmina ansible qbittorrent \
     rclone flameshot bc unzip dmidecode autorandr variety git tree \
-    virt-manager dunst xclip rofi scrot powertop openvpn \
+    virt-manager dunst xclip rofi scrot powertop \
     wget python3 freecad gparted kicad polybar arandr pavucontrol \
     docker.io docker-compose htop powerline feh playerctl numlockx \
     printer-driver-dymo intune-portal microsoft-edge-stable sshpass \
