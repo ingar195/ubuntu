@@ -64,7 +64,7 @@ sudo apt install -y zsh remmina ansible qbittorrent \
     docker.io docker-compose htop powerline feh playerctl numlockx \
     printer-driver-dymo intune-portal microsoft-edge-stable sshpass \
     libreoffice wireguard qelectrotech brightnessctl resolvconf alacritty \
-    ltunify python3-pip
+    ltunify python3-pip subversion
 
 sudo snap install slack
 sudo snap install --classic code
