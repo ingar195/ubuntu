@@ -1,0 +1,6 @@
+gobuster nmap mysql-client hydra gcc-mingw-w64-x86-64 python-crypto screen 
+
+
+
+sudo pip3 install pycryptodomex --break-system-packages
+git@github.com:lgandx/Responder.git
